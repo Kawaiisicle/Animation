@@ -28,6 +28,44 @@ public class DotData {
 		setSpeed(1);
 	}
 	
+	public DotData(int size, int x, int y, int dir, Color theColor, int spe)
+	{
+		setWidth(size);
+		setHeight(size);
+		if(dir == 0)
+		{
+			up = true;
+			down = false;
+			left = true;
+			right = false;
+		}
+		else if(dir == 1)
+		{
+			up = true;
+			down = false;
+			left = false;
+			right = true;
+		}
+		else if(dir == 2)
+		{
+			up = false;
+			down = true;
+			left = false;
+			right = true;
+		}
+		else if(dir == 3)
+		{
+			up = false;
+			down = true;
+			left = true;
+			right = false;
+		}
+		setStartX(x);
+		setStartY(y);
+		setColor(theColor);
+		setSpeed(spe);
+	}
+	
 	public DotData(int size, int dir, Color theColor, int spe)
 	{
 		setWidth(size);
@@ -141,7 +179,7 @@ public class DotData {
 	
 	public void paintDot(Graphics notG)
 	{
-		notG.setColor(getColor());
+		notG.setColor(Util.fluidColor(notG, startX, startY));
 		notG.fillRect(getStartX(), getStartY(), getWidth(), getHeight());
 	}
 	public int[] getCurrentLoc() {

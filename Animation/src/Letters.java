@@ -9,10 +9,10 @@ public class Letters extends DotData {
 	int spacing;
 	int lines;
 	int maxLetters;
-	public Letters(String word, int space, int maxLetters) 
+	public Letters(String word, int penWeight, int space, int maxLetters) 
 	{
-		super(10,2,Color.BLACK, 1);
-		pW = 5; 
+		super(10,50, 90, 2,Color.BLACK, 1);
+		pW = penWeight; 
 		this.word = word;
 		this.letters = word.length();
 		spacing = space*pW;
@@ -86,28 +86,104 @@ public class Letters extends DotData {
 		fillRect(notG, x, y+(4*pW), 3, 1); //bottom line
 	}
 	private void drawJ(Graphics notG, int x, int y) {
-		drawBroke(notG, x, y);
+		fillRect(notG, x+(pW), y, 2, 1);		   //top right line
+		fillRect(notG, x+(2*pW), y, 1, 5); //right vert line
+		fillRect(notG, x, y+(4*pW), 3, 1); //bottom line
+		fillRect(notG, x, y+(2*pW), 1, 3);  //left short vert line
 	}
 	private void drawK(Graphics notG, int x, int y) {
-		drawBroke(notG, x, y);
+		fillRect(notG, x, y, 1, 5);		   //left vert line
+		fillRect(notG, x+(2*pW), y+(3*pW), 1, 2);  //right bottom short vert line
+		fillRect(notG, x, y+(2*pW), 2, 1); 		   //middle short line
+		fillRect(notG, x+(2*pW), y, 1, 2);  //right top short vert line
 	}
 	private void drawL(Graphics notG, int x, int y) {
-		drawBroke(notG, x, y);
+		fillRect(notG, x, y, 1, 5);		   //left vert line
+		fillRect(notG, x, y+(4*pW), 3, 1); //bottom line
+		
 	}
 	private void drawM(Graphics notG, int x, int y) {
-		drawBroke(notG, x, y);
+		fillRect(notG, x, y, 5, 1);		   //top line
+		fillRect(notG, x, y, 1, 5);		   //left vert line
+		fillRect(notG, x+(2*pW), y, 1, 5);  //right top short vert line
+		fillRect(notG, x+(4*pW), y+(pW), 1, 4); //right vert line
 	}
 	private void drawN(Graphics notG, int x, int y) {
-		drawBroke(notG, x, y);
+		fillRect(notG, x, y, 1, 5);		   //left vert line
+		fillRect(notG, x, y, 3, 1);		   //top line
+		fillRect(notG, x+(2*pW), y, 1, 5); //right vert line
 	}
 	private void drawO(Graphics notG, int x, int y) {
-		drawBroke(notG, x, y);
+		fillRect(notG, x, y, 1, 5);		   //left vert line
+		fillRect(notG, x, y, 3, 1);		   //top line
+		fillRect(notG, x+(2*pW), y, 1, 5); //right vert line
+		fillRect(notG, x, y+(4*pW), 3, 1); //bottom line
 	}
 	private void drawP(Graphics notG, int x, int y) {
-		drawBroke(notG, x, y);
+		fillRect(notG, x, y, 1, 5);		   //left vert line
+		fillRect(notG, x, y, 3, 1);		   //top line
+		fillRect(notG, x, y+(2*pW), 3, 1); 		   //middle short line
+		fillRect(notG, x+(2*pW), y, 1, 3);  //right top short vert line
 	}
 	private void drawQ(Graphics notG, int x, int y) {
-		drawBroke(notG, x, y);
+		fillRect(notG, x, y, 1, 5);		   //left vert line
+		fillRect(notG, x, y, 4, 1);		   //top line
+		fillRect(notG, x+(3*pW), y, 1, 5); //right vert line
+		fillRect(notG, x, y+(4*pW), 4, 1); //bottom line
+		fillRect(notG, x+(2*pW), y+(3*pW), 1, 1);  //right bottom short vert line
+	}
+	private void drawR(Graphics notG, int x, int y) {
+		fillRect(notG, x, y, 1, 5);		   //left vert line
+		fillRect(notG, x+(2*pW), y+(3*pW), 1, 2);  //right bottom short vert line
+		fillRect(notG, x, y+(2*pW), 2, 1); 		   //middle short line
+		fillRect(notG, x+(2*pW), y, 1, 2);  //right top short vert line
+		fillRect(notG, x, y, 3, 1);		   //top line
+	}
+	private void drawS(Graphics notG, int x, int y) {
+		fillRect(notG, x, y, 3, 1);		   //top line
+		fillRect(notG, x, y, 1, 3);  //left top short vert line
+		fillRect(notG, x, y+(2*pW), 3, 1); //middle line
+		fillRect(notG, x+(2*pW), y+(3*pW), 1, 2);  //right bottom short vert line
+		fillRect(notG, x, y+(4*pW), 3, 1); //bottom line
+	}
+	private void drawT(Graphics notG, int x, int y) {
+		fillRect(notG, x, y, 3, 1);		   //top line
+		fillRect(notG, x+(pW), y, 1, 5);		   //left vert line
+	}
+	private void drawU(Graphics notG, int x, int y) {
+		fillRect(notG, x, y, 1, 5);		   //left vert line
+		fillRect(notG, x, y+(4*pW), 3, 1); //bottom line
+		fillRect(notG, x+(2*pW), y, 1, 5); //right vert line
+	}
+	private void drawV(Graphics notG, int x, int y) {
+		fillRect(notG, x, y, 1, 4);		   //left vert line most
+		fillRect(notG, x+(pW), y+(4*pW), 1, 1); //bottom dot
+		fillRect(notG, x+(2*pW), y, 1, 4); //right vert line most
+	}
+	private void drawW(Graphics notG, int x, int y) {
+		fillRect(notG, x, y, 1, 5);		   //left vert line
+		fillRect(notG, x+(4*pW), y, 1, 5);  //right vert line
+		fillRect(notG, x+(2*pW), y+(2*pW), 1, 3); //right short vert line
+		fillRect(notG, x, y+(4*pW), 4, 1); //bottom line
+	}
+	private void drawX(Graphics notG, int x, int y) {
+		fillRect(notG, x, y, 1, 2);		   //left vert line
+		fillRect(notG, x, y+(3*pW), 1, 2);		   //left vert line
+		fillRect(notG, x+(2*pW), y+(3*pW), 1, 2);  //right bottom short vert line
+		fillRect(notG, x+(pW), y+(2*pW), 1, 1); 		   //middle dot
+		fillRect(notG, x+(2*pW), y, 1, 2);  //right top short vert line
+	}
+	private void drawY(Graphics notG, int x, int y) {
+		fillRect(notG, x, y, 1, 2);		   //left vert line most
+		fillRect(notG, x+(pW), y+(2*pW), 1, 3); //bottom dot
+		fillRect(notG, x+(2*pW), y, 1, 2); //right vert line most
+	}
+	private void drawZ(Graphics notG, int x, int y) {
+		fillRect(notG, x, y, 3, 1);		   //top line
+		fillRect(notG, x, y+(4*pW), 3, 1); //bottom line
+		fillRect(notG, x, y+(3*pW), 1, 2);		   //left vert line
+		fillRect(notG, x+(pW), y+(2*pW), 1, 1); 		   //middle dot
+		fillRect(notG, x+(2*pW), y, 1, 2);  //right top short vert line
 	}
 	private void drawBroke(Graphics notG, int x, int y) {
 		notG.setColor(Color.RED);
@@ -116,6 +192,7 @@ public class Letters extends DotData {
 	}
 	public void drawLetter(Graphics notG, String letter, int x, int y)
 	{
+		notG.setColor(Util.fluidColor(notG, x, y));
 		String it = letter.toUpperCase();
 		switch (it) {
 			case " ": drawSpace(notG, x, y); break;
@@ -136,6 +213,15 @@ public class Letters extends DotData {
 			case "O": drawO(notG, x, y); break;
 			case "P": drawP(notG, x, y); break;
 			case "Q": drawQ(notG, x, y); break;
+			case "R": drawR(notG, x, y); break;
+			case "S": drawS(notG, x, y); break;
+			case "T": drawT(notG, x, y); break;
+			case "U": drawU(notG, x, y); break;
+			case "V": drawV(notG, x, y); break;
+			case "W": drawW(notG, x, y); break;
+			case "X": drawX(notG, x, y); break;
+			case "Y": drawY(notG, x, y); break;
+			case "Z": drawZ(notG, x, y); break;
 			default : drawBroke(notG, x, y); break;
 		}
 		
@@ -158,11 +244,20 @@ public class Letters extends DotData {
 			case "J": return 3*pW; 
 			case "K": return 3*pW; 
 			case "L": return 3*pW; 
-			case "M": return 3*pW; 
+			case "M": return 5*pW; 
 			case "N": return 3*pW; 
 			case "O": return 3*pW; 
 			case "P": return 3*pW; 
-			case "Q": return 3*pW; 
+			case "Q": return 4*pW;
+			case "R": return 3*pW; 
+			case "S": return 3*pW; 
+			case "T": return 3*pW; 
+			case "U": return 3*pW; 
+			case "V": return 3*pW; 
+			case "W": return 4*pW; 
+			case "X": return 3*pW; 
+			case "Y": return 3*pW; 
+			case "Z": return 3*pW;
 			default : return 3*pW;
 		}
 	}
@@ -171,7 +266,7 @@ public class Letters extends DotData {
 	{
 		int letterLoc = 0;
 		int maxLetterLoc = 0;
-		int linePos = 0;
+		int linePos = 1;
 		for(int i = 0; i < letters; i++)
 		{
 			String theLetter = word.substring(i, i+1);
@@ -182,7 +277,7 @@ public class Letters extends DotData {
 			{
 				maxLetterLoc = letterLoc;
 			}
-			if(i == maxLetters)
+			if((i+1)%maxLetters == 0)
 			{
 				linePos += 6*pW;
 				lines++;

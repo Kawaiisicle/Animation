@@ -10,8 +10,8 @@ final public class Animate {
     JFrame frame;
     DrawPanel drawPanel;
 
-    private int canLen = 600; // Canvas length
-    private int canHig = 600; // Canvas height
+    private int canLen = 400; // Canvas length
+    private int canHig = 400; // Canvas height
     private int dotSize = 40;
     
     private ArrayList<DotData> dots = new ArrayList<DotData>();
@@ -22,10 +22,10 @@ final public class Animate {
     }
 
     private void go() {
-    	dots.add(new DotData(dotSize,dotSize,true,false,true,false,200,100,Color.BLUE,1));
-    	dots.add(new DotData(dotSize,dotSize,false,true,true,false,100,200,Color.GREEN,3));
-    	dots.add(new DotData(dotSize,dotSize,true,false,false,true,200,150,Color.ORANGE,2));
-    	dots.add(new Letters("BIG BEEBEE", 2, 3));
+    	dots.add(new DotData(30, 55, 34, 1,Color.BLUE,1));
+    	dots.add(new DotData(20,1,Color.GREEN,3));
+    	dots.add(new DotData(15,0,Color.ORANGE,2));
+    	dots.add(new Letters("hello wiebe", 3, 2, 6));
     	for(int x = 1; x < 4; x++)
     	{
     		/*for(int i = 1; i < 10+x; i++)

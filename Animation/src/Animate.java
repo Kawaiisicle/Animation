@@ -22,10 +22,13 @@ final public class Animate {
     }
 
     private void go() {
-    	dots.add(new DotData(30, 55, 34, 1,Color.BLUE,1));
+    	dots.add(new DotData(30, 55, 34, 1,Util.randomColor(),1));
     	dots.add(new DotData(20,1,Color.GREEN,3));
     	dots.add(new DotData(15,0,Color.ORANGE,2));
-    	dots.add(new Letters("hello wiebe", 3, 2, 6));
+    	dots.add(new Letters("Welcome to the jungle.", 2, 2, 10));
+    	dots.add(new Letters("AAAAAAAAA", 5, 2, 3));
+    	dots.add(new Letters(140, 24, 0, "A", 10));
+    	dots.add(new Letters(140, 24, 0, "Hello mr. wiebe", 4));
     	for(int x = 1; x < 4; x++)
     	{
     		/*for(int i = 1; i < 10+x; i++)

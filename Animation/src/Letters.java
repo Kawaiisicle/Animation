@@ -1,24 +1,125 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.ArrayList;
 
 public class Letters extends DotData {
 
 	int pW; //pen weight in px
-	String word;
-	int letters;
 	int spacing;
 	int lines;
 	int maxLetters;
-	public Letters(String word, int penWeight, int space, int maxLetters) 
+	int colorCode;
+	ArrayList<String> words;
+	
+	public Letters(String string) 
+	{
+		super(10,50, 50, 2,Color.BLACK, 1);
+		pW = 3;
+		spacing = 4*pW;
+		lines = 0;
+		this.maxLetters = maxLetters;
+		setHeight((lines+1)*(pW*6));
+		
+		
+		words = new ArrayList<String>();
+		String[] wordArr = string.split(" ");
+		for(String word : wordArr)
+		{
+			words.add(word);
+		}
+		
+	}
+	
+	public Letters(String string, int x, int y) 
+	{
+		super(10,x, y, 2,Color.BLACK, 1);
+		pW = 3;
+		spacing = 4*pW;
+		lines = 0;
+		this.maxLetters = maxLetters;
+		setHeight((lines+1)*(pW*6));
+		
+		
+		words = new ArrayList<String>();
+		String[] wordArr = string.split(" ");
+		for(String word : wordArr)
+		{
+			words.add(word);
+		}
+		
+	}
+	public Letters(int x, int y, String string, int penWeight) 
+	{
+		super(10,x, y, 2,Color.BLACK, 1);
+		pW = penWeight;
+		spacing = 2*pW;
+		lines = 0;
+		this.maxLetters = 12;
+		setHeight((lines+1)*(pW*6));
+		
+		
+		words = new ArrayList<String>();
+		String[] wordArr = string.split(" ");
+		for(String word : wordArr)
+		{
+			words.add(word);
+		}
+		
+	}
+	public Letters(int x, int y, int dir, String string, int penWeight) 
+	{
+		super(10,x, y, dir,Color.BLACK, 1);
+		pW = penWeight;
+		spacing = 2*pW;
+		lines = 0;
+		this.maxLetters = 12;
+		setHeight((lines+1)*(pW*6));
+		
+		
+		words = new ArrayList<String>();
+		String[] wordArr = string.split(" ");
+		for(String word : wordArr)
+		{
+			words.add(word);
+		}
+		
+	}
+	public Letters(int color, int x, int y, int dir, String string, int penWeight) 
+	{
+		super(10,x, y, dir,Color.BLACK, 1);
+		colorCode = color;
+		pW = penWeight;
+		spacing = 2*pW;
+		lines = 0;
+		this.maxLetters = 12;
+		setHeight((lines+1)*(pW*6));
+		
+		
+		words = new ArrayList<String>();
+		String[] wordArr = string.split(" ");
+		for(String word : wordArr)
+		{
+			words.add(word);
+		}
+		
+	}
+	public Letters(String string, int penWeight, int space, int maxLetters) 
 	{
 		super(10,50, 90, 2,Color.BLACK, 1);
-		pW = penWeight; 
-		this.word = word;
-		this.letters = word.length();
+		pW = penWeight;
 		spacing = space*pW;
 		lines = 0;
 		this.maxLetters = maxLetters;
 		setHeight((lines+1)*(pW*6));
+		
+		
+		words = new ArrayList<String>();
+		String[] wordArr = string.split(" ");
+		for(String word : wordArr)
+		{
+			words.add(word);
+		}
+		
 	}
 	
 	private void fillRect(Graphics theG, int x, int y, int width, int height)
@@ -185,6 +286,19 @@ public class Letters extends DotData {
 		fillRect(notG, x+(pW), y+(2*pW), 1, 1); 		   //middle dot
 		fillRect(notG, x+(2*pW), y, 1, 2);  //right top short vert line
 	}
+	private void drawPeriod(Graphics notG, int x, int y) {
+		fillRect(notG, x, y+(4*pW), 1, 1); //bottom dot
+	}
+	private void drawQuestion(Graphics notG, int x, int y) {
+		fillRect(notG, x, y, 2, 1);		   //top line
+		fillRect(notG, x, y+(2*pW), 2, 1); 		   //middle short line
+		fillRect(notG, x+(1*pW), y, 1, 3);  //right top short vert line
+		fillRect(notG, x, y+(4*pW), 1, 1); //bottom dot
+	}
+	private void drawExclam(Graphics notG, int x, int y) {
+		fillRect(notG, x, y, 1, 3);		   //left vert line
+		fillRect(notG, x, y+(4*pW), 1, 1); //bottom dot
+	}
 	private void drawBroke(Graphics notG, int x, int y) {
 		notG.setColor(Color.RED);
 		fillRect(notG, x, y, 3, 5);
@@ -192,7 +306,7 @@ public class Letters extends DotData {
 	}
 	public void drawLetter(Graphics notG, String letter, int x, int y)
 	{
-		notG.setColor(Util.fluidColor(notG, x, y));
+		notG.setColor(Util.fluidColor2(notG, x, y));
 		String it = letter.toUpperCase();
 		switch (it) {
 			case " ": drawSpace(notG, x, y); break;
@@ -222,6 +336,9 @@ public class Letters extends DotData {
 			case "X": drawX(notG, x, y); break;
 			case "Y": drawY(notG, x, y); break;
 			case "Z": drawZ(notG, x, y); break;
+			case ".": drawPeriod(notG, x, y); break;
+			case "?": drawQuestion(notG, x, y); break;
+			case "!": drawExclam(notG, x, y); break;
 			default : drawBroke(notG, x, y); break;
 		}
 		
@@ -258,6 +375,9 @@ public class Letters extends DotData {
 			case "X": return 3*pW; 
 			case "Y": return 3*pW; 
 			case "Z": return 3*pW;
+			case ".": return 1*pW; 
+			case "!": return 1*pW; 
+			case "?": return 2*pW;
 			default : return 3*pW;
 		}
 	}
@@ -265,27 +385,64 @@ public class Letters extends DotData {
 	public void drawWord(Graphics notG)
 	{
 		int letterLoc = 0;
+		int letterCount = 0;
 		int maxLetterLoc = 0;
 		int linePos = 1;
-		for(int i = 0; i < letters; i++)
+		boolean justNewLined = false;
+		for(String word : words)
 		{
-			String theLetter = word.substring(i, i+1);
-			drawLetter(notG, theLetter, getStartX()+letterLoc, getStartY()+linePos);
-			letterLoc += letLen(theLetter);
-			letterLoc += spacing;
-			if(letterLoc > maxLetterLoc)
+			int letters = word.length();
+			boolean newLine = false;
+			boolean tooBig = false;
+			if(letters > maxLetters)
 			{
-				maxLetterLoc = letterLoc;
+				tooBig = true;
 			}
-			if((i+1)%maxLetters == 0)
+			else if(letterCount+letters > maxLetters)
 			{
 				linePos += 6*pW;
 				lines++;
 				letterLoc = 0;
+				newLine = true;
+				justNewLined = true;
+			}
+			for(int i = 0; i < letters; i++)	
+			{
+				letterCount++;
+				String theLetter = word.substring(i, i+1);
+				drawLetter(notG, theLetter, getStartX()+letterLoc, getStartY()+linePos);
+				letterLoc += letLen(theLetter);
+				letterLoc += spacing;
+				justNewLined = false;
+				if(letterLoc > maxLetterLoc)
+				{
+					maxLetterLoc = letterLoc;
+				}
+				if(tooBig && (i+1)%maxLetters == 0)
+				{
+					linePos += 6*pW;
+					lines++;
+					letterLoc = 0;
+					newLine = true;
+					justNewLined = true;
+				}
+			}
+			if(!newLine || tooBig)
+			{
+				drawLetter(notG, " ", getStartX()+letterLoc, getStartY()+linePos);
+				letterLoc += 3;
+				letterLoc += spacing;
 			}
 		}
 		setWidth(maxLetterLoc-spacing);
-		setHeight(linePos+(5*pW));
+		if(!justNewLined)
+		{
+			setHeight(linePos+(5*pW));
+		}
+		else
+		{
+			setHeight(linePos);
+		}
 	}
 	
 	public void paintDot(Graphics notG)

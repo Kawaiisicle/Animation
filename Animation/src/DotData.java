@@ -179,7 +179,7 @@ public class DotData {
 	
 	public void paintDot(Graphics notG)
 	{
-		notG.setColor(Util.fluidColor(notG, startX, startY));
+		notG.setColor(color);
 		notG.fillRect(getStartX(), getStartY(), getWidth(), getHeight());
 	}
 	public int[] getCurrentLoc() {

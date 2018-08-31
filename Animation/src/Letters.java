@@ -66,6 +66,26 @@ public class Letters extends DotData {
 		}
 		
 	}
+	
+	public Letters(int x, int y, String string, int penWeight, int speed, int colorCode) 
+	{
+		super(10,x, y, 2,Color.BLACK, speed);
+		pW = penWeight;
+		spacing = 2*pW;
+		lines = 0;
+		this.maxLetters = 12;
+		setHeight((lines+1)*(pW*6));
+		this.colorCode = colorCode;
+		
+		words = new ArrayList<String>();
+		String[] wordArr = string.split(" ");
+		for(String word : wordArr)
+		{
+			words.add(word);
+		}
+		
+	}
+	
 	public Letters(int x, int y, int dir, String string, int penWeight) 
 	{
 		super(10,x, y, dir,Color.BLACK, 1);
@@ -122,8 +142,44 @@ public class Letters extends DotData {
 		
 	}
 	
+	public Letters(String string, int penWeight, int space, int maxLetters, Color theColor) 
+	{
+		super(10,50, 90, 2,theColor, 1);
+		pW = penWeight;
+		spacing = space*pW;
+		lines = 0;
+		this.maxLetters = maxLetters;
+		setHeight((lines+1)*(pW*6));
+		
+		words = new ArrayList<String>();
+		String[] wordArr = string.split(" ");
+		for(String word : wordArr)
+		{
+			words.add(word);
+		}
+		
+	}
+	
+	private Color checkColor(int x, int y)
+	{
+		switch (colorCode)
+		{
+		case 0: setColor(Color.RED); return Color.RED;
+		case 1: setColor(Color.ORANGE); return Color.ORANGE;
+		case 2: setColor(Color.YELLOW); return Color.YELLOW;
+		case 3: setColor(Color.GREEN); return Color.GREEN;
+		case 4: setColor(Color.BLUE); return Color.BLUE;
+		case 5: setColor(Color.MAGENTA); return Color.MAGENTA;
+		case 6: setColor(Util.fluidColor2(x, y)); return Util.fluidColor2(x/2, y/2);
+		case 7: setColor(Util.tickerColor(Color.RED, Color.ORANGE, Color.YELLOW, x)); return Util.tickerColor(Color.RED, Color.ORANGE, Color.YELLOW, x);
+		case 8: setColor(Util.tickerColor(Color.GREEN, Color.BLUE, new Color(255, 0, 255), y)); return Util.tickerColor(Color.RED, Color.ORANGE, Color.YELLOW, y);
+		default: setColor(Color.BLACK); return Color.BLACK;
+		}
+	}
+	
 	private void fillRect(Graphics theG, int x, int y, int width, int height)
 	{
+		theG.setColor(getColor());
 		theG.fillRect(x, y, width*this.pW, height*this.pW);
 	}
 	
@@ -306,7 +362,7 @@ public class Letters extends DotData {
 	}
 	public void drawLetter(Graphics notG, String letter, int x, int y)
 	{
-		notG.setColor(Util.fluidColor2(notG, x, y));
+		notG.setColor(checkColor(x, y));
 		String it = letter.toUpperCase();
 		switch (it) {
 			case " ": drawSpace(notG, x, y); break;
@@ -447,7 +503,6 @@ public class Letters extends DotData {
 	
 	public void paintDot(Graphics notG)
 	{
-		notG.setColor(getColor());
 		drawWord(notG);
 	}
 

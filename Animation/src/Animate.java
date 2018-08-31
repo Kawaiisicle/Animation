@@ -3,6 +3,7 @@ import java.awt.Graphics;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 
 final public class Animate {
@@ -10,8 +11,8 @@ final public class Animate {
     JFrame frame;
     DrawPanel drawPanel;
 
-    private int canLen = 400; // Canvas length
-    private int canHig = 400; // Canvas height
+    private int canLen = 600; // Canvas length
+    private int canHig = 600; // Canvas height
     private int dotSize = 40;
     
     private ArrayList<DotData> dots = new ArrayList<DotData>();
@@ -22,13 +23,20 @@ final public class Animate {
     }
 
     private void go() {
+    	Scanner scanner = new Scanner(System.in);
     	dots.add(new DotData(30, 55, 34, 1,Util.randomColor(),1));
     	dots.add(new DotData(20,1,Color.GREEN,3));
     	dots.add(new DotData(15,0,Color.ORANGE,2));
-    	dots.add(new Letters("Welcome to the jungle.", 2, 2, 10));
+    	dots.add(new Letters("WOW noah SUCKS.", 2, 2, 10));
     	dots.add(new Letters("AAAAAAAAA", 5, 2, 3));
     	dots.add(new Letters(140, 24, 0, "A", 10));
-    	dots.add(new Letters(140, 24, 0, "Hello mr. wiebe", 4));
+    	dots.add(new Letters(140, 5, 0, "wHY ARE YOU HERE?", 5));
+    	dots.add(new Letters(140, 24, 0, "WELCOME TO MY GALLERY WALK!", 4));
+    	dots.add(new Letters("THIS LOOKS WACK!", 5, 2, 12, Color.RED));
+    	dots.add(new Letters(150, 240, "AAAHHHHH", 7, 5, 8));
+    	dots.add(new Letters(150, 240, "AAAHHHHH", 7, 5, 6));
+    	System.out.println("Write something!");
+    	dots.add(new Letters(150, 240, scanner.nextLine(), 7, 5, 4));
     	for(int x = 1; x < 4; x++)
     	{
     		/*for(int i = 1; i < 10+x; i++)
